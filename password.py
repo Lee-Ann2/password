@@ -36,6 +36,8 @@ def is_password_secure():
     special_characters = '!@#$%^&*+/'
     letters_lower = [chr(i) for i in range(ord('a'), ord('z') + 1)]
     letters_upper = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
+    numbers = [str(i) for i in range(10)]
+    has_number = any(char in numbers for char in password)
     has_special_char = any(char in special_characters for char in password)
     has_lower_letter = any(char in letters_lower for char in password)
     has_upper_letter = any(char in letters_upper for char in password)
@@ -48,7 +50,8 @@ def is_password_secure():
         message += 'Your password should have at least one lowercase letter. '
     if not has_upper_letter:
         message += 'Your password should have at least one uppercase letter. '
-    
+    if not has_number:
+        message += 'You should have at least 1 number.'
     if message:
         print(message)
     else:
