@@ -41,7 +41,7 @@ def is_password_secure():
     has_special_char = any(char in special_characters for char in password)
     has_lower_letter = any(char in letters_lower for char in password)
     has_upper_letter = any(char in letters_upper for char in password)
-    
+    #Add the boolean
     if len(password) < 8:
         message += 'Your password should be at least 8 characters long. '
     if not has_special_char:
