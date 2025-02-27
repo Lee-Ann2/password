@@ -31,6 +31,7 @@ is_password_secure()
 '''
 
 def is_password_secure():
+    isPasswordValid = True
     password = input('Enter password: ')
     message = ''
     special_characters = '!@#$%^&*+/'
@@ -43,14 +44,19 @@ def is_password_secure():
     has_upper_letter = any(char in letters_upper for char in password)
     #Add the boolean
     if len(password) < 8:
+        isPasswordValid = False
         message += 'Your password should be at least 8 characters long. '
     if not has_special_char:
+        isPasswordValid = False
         message += 'Your password should have at least one special character. '
     if not has_lower_letter:
+        isPasswordValid = False
         message += 'Your password should have at least one lowercase letter. '
     if not has_upper_letter:
+        isPasswordValid = False
         message += 'Your password should have at least one uppercase letter. '
     if not has_number:
+        isPasswordValid = False
         message += 'You should have at least 1 number.'
     if message:
         print(message)
